@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="فيقوري — قهوة مختصة وفرنش توست مبتكر. تجربة مختلفة في كل زيارة.">
+  <title>VIGORE — قهوة مختصة وفرنش توست مبتكر</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Tajawal (Arabic) + DM Sans (English) -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ═══════════════════════════════════════════
+       DESIGN SYSTEM — VIGORE V2
+       Minimal · Warm · Premium
+    ═══════════════════════════════════════════ */
+    :root {
+      /* Colors */
+      --green:      #4CAF50;
+      --green-dk:   #388E3C;
+      --green-lt:   #A5D6A7;
+      --green-pale: #E8F5E9;
+      --black:      #0A0A0A;
+      --charcoal:   #1A1A1A;
+      --dark2:      #2A2A2A;
+      --cream:      #FAFAF5;
+      --warm:       #F5F3EE;
+      --white:      #FFFFFF;
+      --grey:       #6B6B6B;
+      --grey-lt:    #B0B0B0;
+      --border:     #E8E5DE;
+      --gold:       #C9A84C;
+
+      /* Typography */
+      --font-ar:  'Tajawal', sans-serif;
+      --font-en:  'DM Sans', sans-serif;
+
+      /* Spacing */
+      --s1: 4px;   --s2: 8px;   --s3: 12px;  --s4: 16px;
+      --s5: 20px;  --s6: 24px;  --s7: 32px;  --s8: 40px;
+      --s9: 48px;  --s10: 64px; --s11: 80px; --s12: 120px;
+
+      /* Radius */
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+      --r-full: 9999px;
+
+      /* Motion */
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur: 0.5s;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-ar);
+      background: var(--cream);
+      color: var(--black);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ── Utility ── */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 var(--s6);
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION — Minimal floating bar
+    ═══════════════════════════════════════════ */
+    #nav {
+      position: fixed;
+      top: 16px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: var(--r-full);
+      padding: 10px 8px 10px 28px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      max-width: 720px;
+      width: calc(100% - 32px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+      transition: all var(--dur) var(--ease);
+    }
+    #nav.dark {
+      background: rgba(10,10,10,0.75);
+      border-color: rgba(255,255,255,0.1);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    #nav.dark .nav-logo { color: var(--white); }
+    #nav.dark .nav-links a { color: rgba(255,255,255,0.7); }
+    #nav.dark .nav-links a:hover { color: var(--green-lt); }
+    .nav-logo {
+      font-family: var(--font-en);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--green); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--grey);
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--black); }
+    #nav.dark .nav-links a:hover { color: var(--green-lt); }
+    .nav-cta {
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: var(--r-full);
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover {
+      background: var(--green-dk);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(76,175,80,0.3);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+      margin-right: auto;
+    }
+    .hamburger span {
+      width: 20px; height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    #nav.dark .hamburger span { background: var(--white); }
+
+    /* Mobile Nav */
+    #mobile-nav {
+      position: fixed; inset: 0; z-index: 2000;
+      background: var(--charcoal);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    #mobile-nav.open { opacity: 1; pointer-events: all; }
+    #mobile-nav a {
+      font-family: var(--font-en);
+      font-size: 2rem; font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      transition: color 0.3s;
+    }
+    #mobile-nav a:hover { color: var(--green); }
+    .mobile-close {
+      position: absolute; top: 24px; right: 24px;
+      font-size: 1.5rem; color: var(--white); cursor: pointer;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO — Cinematic split layout
+    ═══════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('img/hero.jpg') center center / cover no-repeat;
+      opacity: 0.55;
+      transform: scale(1.08);
+      transition: transform 12s ease, opacity 1s ease;
+    }
+    #hero.loaded .hero-bg {
+      transform: scale(1);
+      opacity: 0.65;
+    }
+    .hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.45) 50%,
+        rgba(0,0,0,0.3) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      padding: 140px 0 100px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-en);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: var(--s7);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px; height: 1.5px;
+      background: var(--green);
+    }
+    .hero-title {
+      font-family: var(--font-en);
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin-bottom: var(--s7);
+    }
+    .hero-title .line-green { color: var(--green); }
+    .hero-subtitle {
+      font-family: var(--font-ar);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      max-width: 480px;
+      margin-bottom: var(--s8);
+    }
+    .hero-actions { display: flex; gap: var(--s4); flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: var(--s2);
+      font-family: var(--font-ar);
+      font-size: 0.95rem; font-weight: 700;
+      padding: 14px 36px;
+      background: var(--green); color: var(--white);
+      border-radius: var(--r-full);
+      transition: all 0.3s var(--ease);
+    }
+    .btn-primary:hover {
+      background: var(--green-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(76,175,80,0.35);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: var(--s2);
+      font-family: var(--font-ar);
+      font-size: 0.95rem; font-weight: 600;
+      padding: 14px 36px;
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: var(--r-full);
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.35);
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .hero-scroll i { font-size: 1rem; animation: float 2.5s ease-in-out infinite; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ═══════════════════════════════════════════
+       STATS — Clean band
+    ═══════════════════════════════════════════ */
+    #stats {
+      background: var(--charcoal);
+      padding: var(--s10) 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      text-align: center;
+      padding: var(--s6);
+      position: relative;
+    }
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 15%; left: 0;
+      height: 70%; width: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .stat-number {
+      font-family: var(--font-en);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: var(--s2);
+    }
+
+    /* ═══════════════════════════════════════════
+       MARQUEE
+    ═══════════════════════════════════════════ */
+    #marquee {
+      background: var(--green);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 35s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center; gap: 24px;
+      padding: 0 40px;
+      font-family: var(--font-en);
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+    .marquee-dot {
+      width: 4px; height: 4px;
+      background: var(--charcoal);
+      border-radius: 50%;
+      opacity: 0.35;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════════
+       IDENTITY — Clean split
+    ═══════════════════════════════════════════ */
+    #identity {
+      padding: var(--s12) 0;
+      background: var(--cream);
+    }
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s11);
+      align-items: center;
+    }
+    .identity-text .section-eyebrow {
+      font-family: var(--font-en);
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: var(--s4);
+    }
+    .identity-title {
+      font-family: var(--font-en);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: var(--s6);
+    }
+    .identity-title .accent { color: var(--green); }
+    .identity-body {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--grey);
+      margin-bottom: var(--s6);
+    }
+    .identity-features {
+      display: flex; flex-direction: column; gap: var(--s5);
+      margin-top: var(--s7);
+    }
+    .id-feat {
+      display: flex; align-items: flex-start; gap: var(--s4);
+    }
+    .id-feat-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--r-sm);
+      background: var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green-dk);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .id-feat-text strong {
+      display: block;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .id-feat-text span {
+      font-size: 0.85rem;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+    .identity-img {
+      position: relative;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .identity-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+    .identity-img:hover img { transform: scale(1.03); }
+    .identity-badge {
+      position: absolute;
+      bottom: var(--s5); right: var(--s5);
+      background: var(--green);
+      color: var(--white);
+      font-family: var(--font-en);
+      font-size: 0.72rem; font-weight: 700;
+      padding: 10px 18px;
+      border-radius: var(--r-full);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════
+       PRODUCTS — Minimal cards
+    ═══════════════════════════════════════════ */
+    #products {
+      padding: var(--s12) 0;
+      background: var(--white);
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--s9);
+      flex-wrap: wrap;
+      gap: var(--s5);
+    }
+    .section-eyebrow {
+      font-family: var(--font-en);
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: var(--s3);
+    }
+    .section-heading {
+      font-family: var(--font-ar);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+    }
+    .section-link {
+      font-family: var(--font-en);
+      font-size: 0.85rem; font-weight: 600;
+      color: var(--green);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.3s;
+    }
+    .section-link:hover { gap: 10px; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s6);
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+    }
+    .product-img-wrap {
+      overflow: hidden;
+      aspect-ratio: 1/1;
+    }
+    .product-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+    .product-info { padding: var(--s5); }
+    .product-cat {
+      font-family: var(--font-en);
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: var(--s2);
+    }
+    .product-name {
+      font-size: 1.1rem; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--grey);
+      line-height: 1.65;
+      margin-bottom: var(--s4);
+    }
+    .product-bottom {
+      display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .product-price {
+      font-family: var(--font-en);
+      font-size: 1.2rem; font-weight: 700;
+    }
+    .product-tag {
+      font-family: var(--font-en);
+      font-size: 0.65rem; font-weight: 700;
+      padding: 5px 14px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: var(--r-full);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════
+       STORY — Dark immersive section
+    ═══════════════════════════════════════════ */
+    #story {
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+    .story-img {
+      position: relative; overflow: hidden;
+    }
+    .story-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; min-height: 400px;
+    }
+    .story-text {
+      padding: var(--s11) var(--s10);
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .story-text .section-eyebrow { color: var(--green); }
+    .story-text .section-heading { color: var(--white); }
+    .story-body {
+      font-size: 1rem;
+      line-height: 2;
+      color: rgba(255,255,255,0.5);
+      margin: var(--s6) 0;
+    }
+    .story-features {
+      display: flex; flex-direction: column; gap: var(--s5);
+      margin-top: var(--s6);
+    }
+    .story-feat {
+      display: flex; align-items: flex-start; gap: var(--s3);
+    }
+    .story-feat-icon {
+      width: 38px; height: 38px;
+      border-radius: var(--r-sm);
+      background: rgba(76,175,80,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .story-feat-text strong {
+      display: block;
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .story-feat-text span {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.55;
+    }
+
+    /* ═══════════════════════════════════════════
+       GALLERY — Masonry-style grid
+    ═══════════════════════════════════════════ */
+    #gallery {
+      padding: var(--s12) 0;
+      background: var(--cream);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: var(--s4);
+    }
+    .gallery-item {
+      border-radius: var(--r-md);
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item:first-child {
+      grid-row: 1 / 3;
+      grid-column: 1 / 3;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex; align-items: flex-end;
+      padding: var(--s5);
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span {
+      font-family: var(--font-en);
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════
+       REVIEWS — Clean cards
+    ═══════════════════════════════════════════ */
+    #reviews {
+      padding: var(--s12) 0;
+      background: var(--white);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s6);
+    }
+    .review-card {
+      background: var(--cream);
+      border-radius: var(--r-lg);
+      padding: var(--s7);
+      display: flex; flex-direction: column;
+      transition: transform 0.3s var(--ease);
+    }
+    .review-card:hover { transform: translateY(-4px); }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: var(--s4);
+    }
+    .review-text {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--grey);
+      flex: 1;
+      margin-bottom: var(--s5);
+    }
+    .review-author {
+      display: flex; align-items: center; gap: var(--s3);
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-family: var(--font-en);
+      font-weight: 700; font-size: 0.9rem;
+    }
+    .review-author-info strong {
+      display: block;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    .review-author-info span {
+      font-size: 0.75rem;
+      color: var(--grey-lt);
+    }
+
+    /* ═══════════════════════════════════════════
+       LOCATIONS — Map-style cards
+    ═══════════════════════════════════════════ */
+    #locations {
+      padding: var(--s12) 0;
+      background: var(--cream);
+    }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s6);
+    }
+    .location-card {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: var(--s7);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .location-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 8px 30px rgba(76,175,80,0.08);
+    }
+    .location-num {
+      font-family: var(--font-en);
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--green);
+      margin-bottom: var(--s4);
+    }
+    .location-title {
+      font-size: 1.15rem; font-weight: 800;
+      margin-bottom: var(--s3);
+    }
+    .location-desc {
+      font-size: 0.88rem;
+      color: var(--grey);
+      line-height: 1.7;
+      margin-bottom: var(--s5);
+    }
+    .location-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-en);
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--green);
+      transition: gap 0.3s;
+    }
+    .location-link:hover { gap: 10px; }
+
+    /* ═══════════════════════════════════════════
+       CTA — Full-width
+    ═══════════════════════════════════════════ */
+    #cta {
+      padding: var(--s12) 0;
+      background: var(--charcoal);
+      text-align: center;
+    }
+    .cta-eyebrow {
+      font-family: var(--font-en);
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: var(--s4);
+    }
+    .cta-title {
+      font-family: var(--font-en);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--s5);
+    }
+    .cta-title .accent { color: var(--green); }
+    .cta-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 520px;
+      margin: 0 auto var(--s7);
+      line-height: 1.9;
+    }
+    .cta-actions {
+      display: flex; gap: var(--s4);
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    #footer {
+      background: var(--black);
+      padding: var(--s10) 0 var(--s6);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s9);
+      margin-bottom: var(--s9);
+    }
+    .footer-brand .footer-logo {
+      font-family: var(--font-en);
+      font-size: 1.4rem; font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: var(--s4);
+    }
+    .footer-brand .footer-logo span { color: var(--green); }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-en);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: var(--s5);
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: var(--s3);
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--green); }
+    .footer-socials {
+      display: flex; gap: var(--s3);
+      margin-top: var(--s5);
+    }
+    .footer-socials a {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      margin-bottom: 0;
+    }
+    .footer-socials a:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: var(--s5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ═══════════════════════════════════════════
+       REVEAL ANIMATIONS
+    ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .identity-grid { grid-template-columns: 1fr; gap: var(--s8); }
+      .identity-img { aspect-ratio: 16/9; }
+      .story-grid { grid-template-columns: 1fr; }
+      .story-img { min-height: 320px; }
+      .story-text { padding: var(--s9) var(--s6); }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 240px 240px 240px;
+      }
+      .gallery-item:first-child {
+        grid-row: 1 / 3;
+        grid-column: 1 / 3;
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      #nav {
+        padding: 12px 20px;
+        gap: 0;
+        border-radius: 0;
+        top: 0; left: 0; right: 0;
+        transform: none;
+        max-width: 100%;
+        width: 100%;
+      }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; margin-right: auto; }
+      #nav.dark .hamburger span { background: var(--white); }
+      .hamburger span { background: var(--charcoal); }
+
+      .hero-content { padding: 120px var(--s6) 80px; }
+      .hero-title { margin-bottom: var(--s5); }
+
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2)::after { display: none; }
+
+      .products-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+
+      .reviews-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .locations-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px;
+      }
+      .gallery-item:first-child {
+        grid-row: auto;
+        grid-column: auto;
+      }
+
+      .footer-grid { grid-template-columns: 1fr; gap: var(--s7); }
+      .footer-bottom { flex-direction: column; gap: var(--s3); text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.8rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-outline { width: 100%; justify-content: center; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .cta-actions .btn-primary,
+      .cta-actions .btn-outline { width: 280px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav id="nav" class="dark">
+    <button class="hamburger" onclick="document.getElementById('mobile-nav').classList.add('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#hero" class="nav-logo">VI<span>GO</span>RE</a>
+    <div class="nav-links">
+      <a href="#identity">من نحن</a>
+      <a href="#products">القائمة</a>
+      <a href="#story">قصتنا</a>
+      <a href="#reviews">آراء العملاء</a>
+    </div>
+    <a href="#locations" class="nav-cta">زورونا</a>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-nav">
+    <button class="mobile-close" onclick="document.getElementById('mobile-nav').classList.remove('open')" aria-label="Close">&times;</button>
+    <a href="#identity" onclick="document.getElementById('mobile-nav').classList.remove('open')">من نحن</a>
+    <a href="#products" onclick="document.getElementById('mobile-nav').classList.remove('open')">القائمة</a>
+    <a href="#story" onclick="document.getElementById('mobile-nav').classList.remove('open')">قصتنا</a>
+    <a href="#reviews" onclick="document.getElementById('mobile-nav').classList.remove('open')">آراء العملاء</a>
+    <a href="#locations" onclick="document.getElementById('mobile-nav').classList.remove('open')">زورونا</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content container">
+      <div class="hero-eyebrow">Specialty Coffee</div>
+      <h1 class="hero-title">
+        <span class="line-green">HAPPINESS</span><br>
+        MAYBE A<br>
+        PIECE
+      </h1>
+      <p class="hero-subtitle">
+        قهوة مختصة وفرنش توست مبتكر. في كل كوب وطبق قصة من الإبداع — لأن السعادة أحياناً تبدأ بلقمة أو رشفة.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">
+          <i class="fas fa-utensils"></i> اطلع على القائمة
+        </a>
+        <a href="#locations" class="btn-outline">
+          <i class="fas fa-map-marker-alt"></i> موقعنا
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number">+6K</div>
+          <div class="stat-label">متابع على إنستغرام</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-number">5★</div>
+          <div class="stat-label">تقييم عملائنا</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">صنف في القائمة</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-number">5 SR</div>
+          <div class="stat-label">تبدأ الأسعار من</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARQUEE ═══ -->
+  <section id="marquee">
+    <div class="marquee-track">
+      <div class="marquee-item">VIGORE COFFEE <span class="marquee-dot"></span></div>
+      <div class="marquee-item">SPECIALTY COFFEE <span class="marquee-dot"></span></div>
+      <div class="marquee-item">FRENCH TOAST <span class="marquee-dot"></span></div>
+      <div class="marquee-item">PREMIUM QUALITY <span class="marquee-dot"></span></div>
+      <div class="marquee-item">RIYADH <span class="marquee-dot"></span></div>
+      <div class="marquee-item">FRESH DAILY <span class="marquee-dot"></span></div>
+      <div class="marquee-item">VIGORE COFFEE <span class="marquee-dot"></span></div>
+      <div class="marquee-item">SPECIALTY COFFEE <span class="marquee-dot"></span></div>
+      <div class="marquee-item">FRENCH TOAST <span class="marquee-dot"></span></div>
+      <div class="marquee-item">PREMIUM QUALITY <span class="marquee-dot"></span></div>
+      <div class="marquee-item">RIYADH <span class="marquee-dot"></span></div>
+      <div class="marquee-item">FRESH DAILY <span class="marquee-dot"></span></div>
+    </div>
+  </section>
+
+  <!-- ═══ IDENTITY ═══ -->
+  <section id="identity">
+    <div class="container">
+      <div class="identity-grid">
+        <div class="identity-text">
+          <div class="section-eyebrow reveal">Our Identity</div>
+          <h2 class="identity-title reveal reveal-delay-1">MORE THAN<br><span class="accent">JUST COFFEE.</span></h2>
+          <p class="identity-body reveal reveal-delay-2">
+            فيقوري ليست مجرد كوفي — هي تجربة مختلفة. بدأنا بفكرة بسيطة: أن كل تفصيلة تصنع الفرق. من قهوة اليوم الطازجة إلى فرنش توست الذي أصبح هويتنا، كل ما نقدمه مصنوع بعناية واهتمام حقيقي.
+          </p>
+          <div class="identity-features">
+            <div class="id-feat reveal reveal-delay-2">
+              <div class="id-feat-icon"><i class="fas fa-mug-hot"></i></div>
+              <div class="id-feat-text">
+                <strong>قهوة مختصة طازجة</strong>
+                <span>محضَّرة يومياً بعناية واهتمام حقيقي</span>
+              </div>
+            </div>
+            <div class="id-feat reveal reveal-delay-3">
+              <div class="id-feat-icon"><i class="fas fa-cookie-bite"></i></div>
+              <div class="id-feat-text">
+                <strong>حلويات مبتكرة</strong>
+                <span>فرنش توست، تراميسيو، تشيز كيك مدريد — صنعة حقيقية</span>
+              </div>
+            </div>
+            <div class="id-feat reveal reveal-delay-4">
+              <div class="id-feat-icon"><i class="fas fa-tag"></i></div>
+              <div class="id-feat-text">
+                <strong>أسعار منطقية للجميع</strong>
+                <span>تبدأ من 5 ريال — جودة لا تُساوم</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="identity-img reveal">
+          <img src="img/interior.jpg" alt="داخل فيقوري" loading="lazy">
+          <span class="identity-badge">KIOSK</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCTS ═══ -->
+  <section id="products">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow reveal">Bestsellers</div>
+          <h2 class="section-heading reveal reveal-delay-1">الأكثر طلباً</h2>
+        </div>
+        <a href="#" class="section-link reveal reveal-delay-2">القائمة كاملة <i class="fas fa-arrow-left"></i></a>
+      </div>
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap">
+            <img src="img/tiramisu.jpg" alt="تراميسيو فيقوري" loading="lazy">
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Dessert</div>
+            <h3 class="product-name">تراميسيو فيقوري</h3>
+            <p class="product-desc">الكلاسيكية الإيطالية بلمسة فيقوري — طبقات غنية من الكريمة والبسكويت المنقوع</p>
+            <div class="product-bottom">
+              <div class="product-price">18 <span>SR</span></div>
+              <span class="product-tag">Bestseller</span>
+            </div>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap">
+            <img src="img/ig1.jpg" alt="آيس شوكولاتة" loading="lazy">
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Cold Drinks</div>
+            <h3 class="product-name">آيس شوكولاتة</h3>
+            <p class="product-desc">شوكولاتة باردة مكثفة بقوام كريمي وتوازن مثالي بين الحلاوة والعمق</p>
+            <div class="product-bottom">
+              <div class="product-price">12 <span>SR</span></div>
+              <span class="product-tag">Popular</span>
+            </div>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card reveal reveal-delay-3">
+          <div class="product-img-wrap">
+            <img src="img/ig2.jpg" alt="آيس ماتشا فيقوري" loading="lazy">
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Cold Drinks</div>
+            <h3 class="product-name">آيس ماتشا فيقوري</h3>
+            <p class="product-desc">ماتشا عالية الجودة مع لبن طازج — نقاء الطعم وانتعاش الروح في كل رشفة</p>
+            <div class="product-bottom">
+              <div class="product-price">15 <span>SR</span></div>
+              <span class="product-tag">Signature</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STORY ═══ -->
+  <section id="story">
+    <div class="story-grid">
+      <div class="story-img">
+        <img src="img/ig3.jpg" alt="كشك فيقوري" loading="lazy">
+      </div>
+      <div class="story-text">
+        <div class="section-eyebrow reveal">Our Story</div>
+        <h2 class="section-heading reveal reveal-delay-1">كشك بلون<br>مختلف</h2>
+        <p class="story-body reveal reveal-delay-2">
+          اللون الأخضر اللافت ليس مصادفة — هو هوية واختيار. فيقوري كشك قهوة متخصص يقدم تجربة مختلفة: قهوة مختصة بأسعار في متناول الجميع، وحلويات مبتكرة تُقدَّم بعناية.
+        </p>
+        <div class="story-features">
+          <div class="story-feat reveal reveal-delay-2">
+            <div class="story-feat-icon"><i class="fas fa-store-alt"></i></div>
+            <div class="story-feat-text">
+              <strong>كشك متخصص</strong>
+              <span>نافذتا الطلب والاستلام — تصميم عملي يعكس احترامنا لوقتك</span>
+            </div>
+          </div>
+          <div class="story-feat reveal reveal-delay-3">
+            <div class="story-feat-icon"><i class="fas fa-heart"></i></div>
+            <div class="story-feat-text">
+              <strong>صنعة حقيقية</strong>
+              <span>كل كوب وطبق يُحضَّر بعناية — لا اختصارات، لا تنازلات</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY ═══ -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow reveal">Gallery</div>
+          <h2 class="section-heading reveal reveal-delay-1">من داخل فيقوري</h2>
+        </div>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <img src="img/ig4.jpg" alt="فيقوري" loading="lazy">
+          <div class="gallery-overlay"><span>French Toast</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/ig5.jpg" alt="فيقوري" loading="lazy">
+          <div class="gallery-overlay"><span>Coffee Art</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/hero.jpg" alt="فيقوري" loading="lazy">
+          <div class="gallery-overlay"><span>Vigore Kiosk</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/interior.jpg" alt="فيقوري" loading="lazy">
+          <div class="gallery-overlay"><span>Our Space</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REVIEWS ═══ -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow reveal">Reviews</div>
+          <h2 class="section-heading reveal reveal-delay-1">يقولون عن فيقوري</h2>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"قهوة رائعة وخدمة سريعة، الفرنش توست لا يوصف — تجربة مختلفة عن كل الكوفيات اللي جربتها. أنصح فيه بشدة لكل محب للقهوة المختصة."</p>
+          <div class="review-author">
+            <div class="review-avatar">م</div>
+            <div class="review-author-info">
+              <strong>محمد القحطاني</strong>
+              <span>Google Maps ★★★★★</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"التراميسيو والماتشا كانوا مذهلين. المكان صغير ولكن اللي يقدمه كبير. أسعار كويسة جداً مقارنة بالجودة، وراح أرجع بكيف."</p>
+          <div class="review-author">
+            <div class="review-avatar">س</div>
+            <div class="review-author-info">
+              <strong>سارة الحربي</strong>
+              <span>Google Maps ★★★★★</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"من أحسن الأماكن اللي جربتها — الكشك الأخضر يلفت النظر وما تندم لو وقفت فيه. الكوكيز والبراونيز يستاهلون التجربة وحدهم."</p>
+          <div class="review-author">
+            <div class="review-avatar">ع</div>
+            <div class="review-author-info">
+              <strong>عبدالله الشمري</strong>
+              <span>Google Maps ★★★★★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LOCATIONS ═══ -->
+  <section id="locations">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow reveal">Find Us</div>
+          <h2 class="section-heading reveal reveal-delay-1">فروعنا</h2>
+        </div>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card reveal">
+          <div class="location-num">01</div>
+          <h3 class="location-title">الفرع الرئيسي</h3>
+          <p class="location-desc">الرياض، المملكة العربية السعودية<br>كشك قهوة متخصص — نافذتا الطلب والاستلام</p>
+          <a href="https://www.google.com/maps/search/vigore+coffee+riyadh" class="location-link" target="_blank">
+            الاتجاهات على خرائط Google <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+        <div class="location-card reveal reveal-delay-1">
+          <div class="location-num">02</div>
+          <h3 class="location-title">تواصل معنا</h3>
+          <p class="location-desc">Instagram: @vigore_sa<br>للاستفسارات والطلبات الخاصة<br>تابع قصصنا اليومية للاطلاع على العروض والجديد</p>
+          <a href="https://www.instagram.com/vigore_sa/" class="location-link" target="_blank">
+            تابعنا على إنستغرام <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+        <div class="location-card reveal reveal-delay-2">
+          <div class="location-num">03</div>
+          <h3 class="location-title">وظائف لدينا</h3>
+          <p class="location-desc">نحن دائماً نبحث عن مواهب شغوفة بعالم القهوة والحلويات<br>تابع هايلايت "الوظائف" على إنستغرام</p>
+          <a href="https://www.instagram.com/vigore_sa/" class="location-link" target="_blank">
+            شاهد الوظائف المتاحة <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-eyebrow reveal">Come Say Hello</div>
+      <h2 class="cta-title reveal reveal-delay-1">COME SAY<br><span class="accent">HELLO.</span></h2>
+      <p class="cta-desc reveal reveal-delay-2">زورونا وجرّبوا الفرق بأنفسكم — قهوة مختصة وحلويات مبتكرة في قلب الرياض</p>
+      <div class="cta-actions reveal reveal-delay-3">
+        <a href="https://www.google.com/maps/search/vigore+coffee+riyadh" class="btn-primary" target="_blank">
+          <i class="fas fa-map-marker-alt"></i> احصل على الاتجاهات
+        </a>
+        <a href="https://www.instagram.com/vigore_sa/" class="btn-outline" target="_blank">
+          <i class="fab fa-instagram"></i> تابعنا على إنستغرام
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">VI<span>GO</span>RE</div>
+          <p>قهوة مختصة وفرنش توست مبتكر. في كل كوب وطبق قصة من الإبداع.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/vigore_sa/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>القائمة</h4>
+          <a href="#products">المشروبات</a>
+          <a href="#products">الحلويات</a>
+          <a href="#products">الأكثر طلباً</a>
+        </div>
+        <div class="footer-col">
+          <h4>عن فيقوري</h4>
+          <a href="#identity">من نحن</a>
+          <a href="#story">قصتنا</a>
+          <a href="#reviews">آراء العملاء</a>
+        </div>
+        <div class="footer-col">
+          <h4>تواصل</h4>
+          <a href="https://www.instagram.com/vigore_sa/" target="_blank">Instagram</a>
+          <a href="https://www.google.com/maps/search/vigore+coffee+riyadh" target="_blank">الموقع</a>
+          <a href="https://www.instagram.com/vigore_sa/" target="_blank">وظائف</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 VIGORE COFFEE. جميع الحقوق محفوظة.</p>
+        <p>صُنع بـ ☕ و ❤️</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    // Hero load animation
+    window.addEventListener('load', () => {
+      document.getElementById('hero').classList.add('loaded');
+    });
+
+    // Navbar scroll behavior
+    const nav = document.getElementById('nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const heroHeight = document.getElementById('hero').offsetHeight;
+
+      if (scrollY > heroHeight - 100) {
+        nav.classList.remove('dark');
+      } else {
+        nav.classList.add('dark');
+      }
+      lastScroll = scrollY;
+    });
+
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
